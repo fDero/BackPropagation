@@ -1,4 +1,4 @@
-from backpropagation.expr import Expr
+from backpropy.expr import Expr
 
 
 class Parameter(Expr):

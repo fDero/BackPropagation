@@ -1,4 +1,4 @@
-from backpropagation.expr import Parameter, Sum, Mul, Tanh, ReLU
+from backpropy.expr import Parameter, Sum, Mul, Tanh, ReLU
 from abc import abstractmethod
 from collections import Counter
 

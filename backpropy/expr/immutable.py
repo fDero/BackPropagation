@@ -1,4 +1,4 @@
-from backpropagation.expr import Expr, Parameter
+from backpropy.expr import Expr, Parameter
 
 
 class Immutable(Expr):

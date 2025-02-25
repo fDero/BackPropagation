@@ -1,5 +1,5 @@
-from backpropagation.net import Neuron
-from backpropagation.expr import Expr
+from backpropy.net import Neuron
+from backpropy.expr import Expr
 
 
 class Layer:

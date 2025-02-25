@@ -1,6 +1,6 @@
 from math import sqrt
 from numpy.random import normal, uniform
-from backpropagation.expr import Expr, Parameter
+from backpropy.expr import Expr, Parameter
 
 
 class Neuron:

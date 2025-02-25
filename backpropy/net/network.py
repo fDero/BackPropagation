@@ -1,5 +1,5 @@
-from backpropagation.net import Layer
-from backpropagation.expr import Expr
+from backpropy.net import Layer
+from backpropy.expr import Expr
 
 
 class Network:
