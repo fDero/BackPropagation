@@ -1,4 +1,4 @@
-# BackPropagation
+# BackPropy
 A very simple implementation of the back-propagation algorithm for neural networks training, 
 written in python, from scratch (no-frameworks).
 
