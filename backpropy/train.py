@@ -22,11 +22,8 @@ class Trainer:
     def train(self, learning_rate: float = 0.0001) -> "TrainingResults":
         assert learning_rate > 0.0
         loss = self._compute_loss()
-        print(loss.grad(), loss.value(), loss)
         for param, grad in loss.grad().items():
-            print(param, grad)
             param.increment(grad * learning_rate * -1)
-            print(param, grad)
         return TrainingResults(loss.value())
 
 

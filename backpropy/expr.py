@@ -14,7 +14,10 @@ class Expr:
 
     @staticmethod
     def _merge_gradients(glx, grx: dict["Parameter", float]) -> dict["Parameter", float]:
-        return dict(Counter(glx) + Counter(grx))
+        result = dict(glx.items())
+        for k, v in grx.items():
+            result[k] = result.get(k, 0.0) + v
+        return result
 
     def __add__(self, other: "Expr") -> "Expr":
         return Sum(self, other)
@@ -33,6 +36,9 @@ class Parameter(Expr):
     def __init__(self, value: float):
         self._value = value
 
+    def __repr__(self):
+        return f"param({self._value})"
+
     def value(self) -> float:
         return self._value
 
@@ -47,6 +53,9 @@ class Immutable(Expr):
     def __init__(self, value: float):
         self._value = value
 
+    def __repr__(self):
+        return f"imm({self._value})"
+
     def value(self) -> float:
         return self._value
 
@@ -58,6 +67,9 @@ class Mul(Expr):
     def __init__(self, lx: Expr, rx: Expr):
         self.lx = lx
         self.rx = rx
+
+    def __repr__(self):
+        return f"mul({self.lx}, {self.rx})"
 
     def value(self) -> float:
         return self.lx.value() * self.rx.value()
@@ -76,6 +88,9 @@ class ReLU(Expr):
         self.arg = arg
         self.alpha = alpha
 
+    def __repr__(self):
+        return f"relu({self.arg})"
+
     def value(self) -> float:
         return max(0.0, self.arg.value())
 
@@ -90,6 +105,9 @@ class Sum(Expr):
         self.lx = lx
         self.rx = rx
 
+    def __repr__(self):
+        return f"sum({self.lx}, {self.rx})"
+
     def value(self) -> float:
         return self.lx.value() + self.rx.value()
 
@@ -103,6 +121,9 @@ class Sum(Expr):
 class Tanh(Expr):
     def __init__(self, arg: Expr):
         self.arg = arg
+
+    def __repr__(self):
+        return f"tanh({self.arg})"
 
     def value(self) -> float:
         return tanh(self.arg.value())
